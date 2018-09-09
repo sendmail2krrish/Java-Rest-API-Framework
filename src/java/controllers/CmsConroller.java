@@ -1,39 +1,14 @@
-# Java MVC with Routing
+package controllers;
 
-## Examples
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-### Route *(web/WEB-INF/config/route.json)*
-
-```
-{
-    "routes": [
-        {
-            "url": "/",
-            "type": "get",
-            "action": "CmsConroller@home"
-        },
-        {
-            "url": "/about",
-            "type": "get",
-            "action": "CmsConroller@about"
-        },
-        {
-            "url": "/{page}",
-            "type": "get",
-            "action": "CmsConroller@page"
-        },
-        {
-            "url": "/{page}/{post}",
-            "type": "get",
-            "action": "CmsConroller@pageWithPost"
-        }
-    ]
-}
-```
-
-### Controller *(controllers.CmsConroller.java)*
-
-```
+/**
+ * Demo controller.
+ * @author Krishna Paul <sendmail2krrish@gmail.com>
+ */
 public class CmsConroller
 {
     public void home(
@@ -74,7 +49,3 @@ public class CmsConroller
         response.getWriter().println(args.get(0) + " - " + args.get(1));;
     }
 }
-```
-
-Thnaks, Happy coding :)<br />
-Krishna Paul <sendmail2krrish@gmail.com>

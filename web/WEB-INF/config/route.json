@@ -1,0 +1,24 @@
+{
+    "routes": [
+        {
+            "url": "/",
+            "type": "get",
+            "action": "CmsConroller@home"
+        },
+        {
+            "url": "/about",
+            "type": "get",
+            "action": "CmsConroller@about"
+        },
+        {
+            "url": "/{page}",
+            "type": "get",
+            "action": "CmsConroller@page"
+        },
+        {
+            "url": "/{page}/{post}",
+            "type": "get",
+            "action": "CmsConroller@pageWithPost"
+        }
+    ]
+}
