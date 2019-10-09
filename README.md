@@ -10,23 +10,13 @@
         {
             "url": "/",
             "type": "get",
-            "action": "CmsConroller@home"
+            "action": "CmsConroller@posts"
         },
         {
-            "url": "/about",
+            "url": "/{post}",
             "type": "get",
-            "action": "CmsConroller@about"
-        },
-        {
-            "url": "/{page}",
-            "type": "get",
-            "action": "CmsConroller@page"
-        },
-        {
-            "url": "/{page}/{post}",
-            "type": "get",
-            "action": "CmsConroller@pageWithPost"
-        }
+            "action": "CmsConroller@postDetails"
+        } 
     ]
 }
 ```
@@ -36,42 +26,28 @@
 ```
 public class CmsConroller
 {
-    public void home(
+    public void posts(
             HttpServletRequest request,
             HttpServletResponse response
     )
             throws IOException
     {
-        response.getWriter().println("Home");
+        /**
+         * This data can be fetched from database.
+         */
+        response.getWriter().println('{ "posts" : [{ "title" : "Test Title", "details" : "Test" }] }');
     }
-
-    public void about(
+    public void postDetails(
             HttpServletRequest request,
             HttpServletResponse response
     )
             throws IOException
     {
-        response.getWriter().println("About");
-    }
-
-    public void page(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            ArrayList args
-    )
-            throws IOException
-    {
-        response.getWriter().println(args.get(0));
-    }
-    
-    public void pageWithPost(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            ArrayList args
-    )
-            throws IOException
-    {
-        response.getWriter().println(args.get(0) + " - " + args.get(1));;
+        /**
+         * This data can be fetched from database as per post
+         * args.get(0) is URL param (1st param). It can be ID or anything
+         */
+        response.getWriter().println('{ "post": "' + args.get(0) + '", "title" : "Test Title", "details" : "Test" }');
     }
 }
 ```
